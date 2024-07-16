@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Search Engine</h1>
+        <form method="post" action="/">
+            <input type="text" name="query" placeholder="Search for recipes..." required>
+            <button type="submit">Search</button>
+        </form>
+        <div class="recipes">
+            {% for recipe in recipes %}
+                <div class="recipe">
+                    <h2>{{ recipe['recipe']['label'] }}</h2>
+                    <img src="{{ recipe['recipe']['image'] }}" alt="{{ recipe['recipe']['label'] }}">
+                    <p>{{ recipe['recipe']['source'] }}</p>
+                    <a href="{{ recipe['recipe'][
